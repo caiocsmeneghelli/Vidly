@@ -196,6 +196,14 @@
     <Compile Include="Migrations\202112061447215_ApplyAnnotationsToCustomerName.designer.cs">
       <DependentUpon>202112061447215_ApplyAnnotationsToCustomerName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112121354136_AddNameFieldInMembershiptType.cs" />
+    <Compile Include="Migrations\202112121354136_AddNameFieldInMembershiptType.designer.cs">
+      <DependentUpon>202112121354136_AddNameFieldInMembershiptType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112121355255_PopulateNameInMemberShiptTypes.cs" />
+    <Compile Include="Migrations\202112121355255_PopulateNameInMemberShiptTypes.designer.cs">
+      <DependentUpon>202112121355255_PopulateNameInMemberShiptTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -266,6 +274,8 @@
     <Content Include="Views\Movies\Random.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Movies\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -298,6 +308,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112061447215_ApplyAnnotationsToCustomerName.resx">
       <DependentUpon>202112061447215_ApplyAnnotationsToCustomerName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112121354136_AddNameFieldInMembershiptType.resx">
+      <DependentUpon>202112121354136_AddNameFieldInMembershiptType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112121355255_PopulateNameInMemberShiptTypes.resx">
+      <DependentUpon>202112121355255_PopulateNameInMemberShiptTypes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
