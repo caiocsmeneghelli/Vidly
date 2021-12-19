@@ -27,7 +27,7 @@
             foreach (var customer in Model)
             {
                 <tr>
-                    <td><h4>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</h4></td>
+                    <td><h4>@Html.ActionLink(customer.Name, "Edit", "Customers", new { id = customer.Id }, null)</h4></td>
                     <td><h4>@customer.MemberShipType.Name</h4></td>
                 </tr>
             }
