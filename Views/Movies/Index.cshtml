@@ -24,10 +24,10 @@
                 {
                     <tr>
                         <td>
-                            <h3>@Html.ActionLink(movie.Name, "Details", "Movies", new { id = movie.Id }, null)</h3>
+                            <h4>@Html.ActionLink(movie.Name, "Edit", "Movies", new { id = movie.Id }, null)</h4>
                         </td>
                         <td>
-                            <h3>@movie.Genre.Name</h3>
+                            <h4>@movie.Genre.Name</h4>
                         </td>
                     </tr>
                 }
