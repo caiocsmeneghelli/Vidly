@@ -11,16 +11,19 @@ namespace Vidly.Models
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(100)]
+        [MaxLength(100, ErrorMessage = "The must have less than 100 characters.")]
         public string Name { get; set; }
 
         [Display(Name = "Release Date")]
+        [IfFutureDate]
         public DateTime ReleasedDate { get; set; }
 
         [Display(Name = "Date Added")]
+        [IfFutureDate]
         public DateTime DateAdded { get; set; }
 
         [Display(Name = "Number in Stock")]
+        [Range(1, 20, ErrorMessage = "Please enter a value between 1 and 20.")]
         public byte NumberInStock { get; set; }
         
         public Genre Genre { get; set; }
