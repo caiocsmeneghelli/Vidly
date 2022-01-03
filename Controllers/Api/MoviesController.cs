@@ -48,7 +48,7 @@ namespace Vidly.Controllers.Api
         }
 
         // Put /api/movies/1
-        [HttpPost]
+        [HttpPut]
         public void UpdateMovie(int id, MovieDto movieDto)
         {
             if (!ModelState.IsValid)
