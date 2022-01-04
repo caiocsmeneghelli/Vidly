@@ -28,11 +28,11 @@
                         {
                             data: "name",
                             render: (data, type, customer) => {
-                                return "<a href='/customers/edit/" + customer.Id + "'>" + customer.name + "</a>";
+                                return "<a href='customers/edit/" + customer.id + "'>" + customer.name + "</a>";
                             }
                         },
                         {
-                            data: "name"
+                            data: "memberShipType.name"
                         },
                         {
                             data: "id",
