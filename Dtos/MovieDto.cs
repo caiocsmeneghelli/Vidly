@@ -20,6 +20,7 @@ namespace Vidly.Dtos
 
         [Range(1, 20, ErrorMessage = "Please enter a value between 1 and 20.")]
         public byte NumberInStock { get; set; }
+        public GenreDto Genre { get; set; }
 
         [Required]
         public int GenreId { get; set; }
