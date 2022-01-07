@@ -244,6 +244,10 @@
     <Compile Include="Migrations\202112190218433_PopulateGenre.designer.cs">
       <DependentUpon>202112190218433_PopulateGenre.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201072034224_AddDrivingLicenseApplicationUser.cs" />
+    <Compile Include="Migrations\202201072034224_AddDrivingLicenseApplicationUser.designer.cs">
+      <DependentUpon>202201072034224_AddDrivingLicenseApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -553,6 +557,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112190218433_PopulateGenre.resx">
       <DependentUpon>202112190218433_PopulateGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201072034224_AddDrivingLicenseApplicationUser.resx">
+      <DependentUpon>202201072034224_AddDrivingLicenseApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
