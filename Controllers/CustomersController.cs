@@ -3,6 +3,8 @@ using System.Web.Mvc;
 using Vidly.Models;
 using System.Data.Entity;
 using Vidly.Models.ViewModels;
+using System.Runtime.Caching;
+using System.Collections.Generic;
 
 namespace Vidly.Controllers
 {
@@ -22,6 +24,12 @@ namespace Vidly.Controllers
         public ActionResult Index()
         {
             // Lista sendo trazida via Ajax
+            // Data Cache
+            if (MemoryCache.Default["Genres"] == null)
+                MemoryCache.Default["Genres"] = _context.Genres.ToList();
+
+            var genres = MemoryCache.Default["Genres"] as IEnumerable<Genre>;
+
             return View();
         }
         public ActionResult Details(int id)
@@ -31,7 +39,7 @@ namespace Vidly.Controllers
                 return HttpNotFound();
             return View(customer);
         }
-        
+
         public ActionResult New()
         {
             var memberShipTypes = _context.MemberShipTypes.ToList();
@@ -46,7 +54,7 @@ namespace Vidly.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Save(CustomerFormViewModel model)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 var viewModel = new CustomerFormViewModel()
                 {
@@ -55,7 +63,7 @@ namespace Vidly.Controllers
                 };
                 return View("CustomerForm", viewModel);
             }
-            if(model.Customer.Id == 0)
+            if (model.Customer.Id == 0)
                 _context.Customers.Add(model.Customer);
             else
             {
