@@ -19,13 +19,26 @@ namespace Vidly.Controllers.Api
         [HttpPost]
         public IHttpActionResult CreateNewRentals(NewRentalDto newRental)
         {
-            var customer = _context.Customers.Single(c => c.Id == newRental.CustomerId);
+            if (newRental.MoviesId.Count == 0)
+                return BadRequest("No movie Ids have been given.");
+
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == newRental.CustomerId);
+            if (customer == null)
+                return BadRequest("CustomerId is not valid");
+
             var movies = _context.Movies.Where(
-                m => newRental.MoviesId.Contains(m.Id));
+                m => newRental.MoviesId.Contains(m.Id)).ToList();
+
+            if (movies.Count != newRental.MoviesId.Count)
+                return BadRequest("One or more MoviesIds are invalid");
 
             foreach (var movie in movies)
             {
+                if (movie.NumberAvailable == 0)
+                    return BadRequest(string.Format("Movie {0} is not available.", movie.Name));
+
                 movie.NumberAvailable--;
+
                 var rental = new Rental()
                 {
                     DateRented = DateTime.Now,
