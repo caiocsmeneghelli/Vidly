@@ -82,6 +82,7 @@ namespace Vidly.Controllers
                 movieInDb.DateAdded = model.DateAdded;
                 movieInDb.NumberInStock = model.NumberInStock;
                 movieInDb.GenreId = model.GenreId;
+                movieInDb.NumberAvailable = model.NumberInStock;
             }
             _context.SaveChanges();
             return RedirectToAction("Index", "Movies");

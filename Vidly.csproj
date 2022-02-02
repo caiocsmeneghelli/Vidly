@@ -255,6 +255,10 @@
     <Compile Include="Migrations\202202022024533_AddRentalModel.designer.cs">
       <DependentUpon>202202022024533_AddRentalModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202022053019_AddNumberAvailableInMovies.cs" />
+    <Compile Include="Migrations\202202022053019_AddNumberAvailableInMovies.designer.cs">
+      <DependentUpon>202202022053019_AddNumberAvailableInMovies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -571,6 +575,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202022024533_AddRentalModel.resx">
       <DependentUpon>202202022024533_AddRentalModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202022053019_AddNumberAvailableInMovies.resx">
+      <DependentUpon>202202022053019_AddNumberAvailableInMovies.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

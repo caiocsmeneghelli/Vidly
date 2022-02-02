@@ -25,6 +25,7 @@ namespace Vidly.Controllers.Api
 
             foreach (var movie in movies)
             {
+                movie.NumberAvailable--;
                 var rental = new Rental()
                 {
                     DateRented = DateTime.Now,
