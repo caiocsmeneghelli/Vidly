@@ -4,22 +4,34 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br />
-<form>
+<form id="newRental">
     <div class="form-group">
         <label>Customer</label>
-        <input id="customer" type="text" value="" class="form-control" />
+        <div class="tt-container">
+            <input id="customer" type="text" value="" class="form-control" />
+        </div>
     </div>
     <div class="form-group">
         <label>Movie</label>
-        <input type="text" value="" class="form-control" />
+        <div class="tt-container">
+            <input id="movie" type="text" value="" class="form-control" />
+        </div>
     </div>
+    <div class="row">
+        <div class="col-md-4">
+            <ul id="movies" class="list-group"></ul>
+        </div>
+    </div>
+
     <button class="btn btn-primary">Submit</button>
 </form>
 
 @section scripts{
     <script>
         $(document).ready(() => {
-            var vm = {};
+            var vm = {
+                moviesId: []
+            };
 
             var customers = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
@@ -29,8 +41,7 @@
                     wildcard: '%QUERY'
                 }
             });
-
-            $('#customer ').typeahead(
+            $('#customer').typeahead(
                 {
                     minLength: 3,
                     highlight: true
@@ -39,8 +50,48 @@
                 display: 'name',
                 source: customers
             }).on("typeahead:select", (e, customer) => {
-                vm.customerId = customer.Id;
+                vm.customerId = customer.id;
             });
+
+            var movies = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/vidly/api/movies?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            
+
+            $('#movie').typeahead(
+                {
+                    minLength: 3,
+                    highlight: true
+                }, {
+                name: 'movies',
+                display: 'name',
+                source: movies
+            }).on("typeahead:select", (e, movie) => {
+                $("#movies").append("<li class='list-group-item'>" + movie.name + "</li>");
+                $("#movie").typeahead("val", "");
+
+                vm.moviesId.push(movie.id);
+            });
+
+            $("#newRental").submit((e) => {
+                e.preventDefault();
+                console.log(vm);
+                $.ajax({
+                    url: "/vidly/api/newRentals",
+                    method: "POST",
+                    data: vm
+                }).done(() => {
+                    console.log("done");
+                }).fail(() => {
+
+                })
+            })
         })
     </script>
     }
